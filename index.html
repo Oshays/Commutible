@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commutible - Learn on Your Commute</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="assets/logo.png" alt="Commutible Logo" class="logo">
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="welcome">
+            <h1>Welcome to Commutible</h1>
+            <p>Learn something new every day on your commute with our 30-minute audiobooks packed with random, fascinating information.</p>
+        </div>
+        <h2>New Releases</h2>
+        <div class="book-list">
+            <div class="book" data-audio="assets/audiobook1.mp3">
+                <h3>History Bites</h3>
+                <p>Quick tales from the past</p>
+                <button onclick="playAudio(this)">Play</button>
+            </div>
+            <div class="book" data-audio="assets/audiobook1.mp3">
+                <h3>Tech Tidbits</h3>
+                <p>Innovations in 30 minutes</p>
+                <button onclick="playAudio(this)">Play</button>
+            </div>
+        </div>
+        <h2>Coming Soon</h2>
+        <div class="book-list">
+            <div class="book">
+                <h3>Productivity Hacks</h3>
+                <p>Boost your day</p>
+                <button disabled>Coming Soon</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- My List Page -->
+    <section id="my-list" class="page">
+        <h2>My Favorite Books</h2>
+        <div id="favorites" class="book-list">
+            <!-- Favorites will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Learn Page -->
+    <section id="learn" class="page">
+        <h2>All Books</h2>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search books..." oninput="searchBooks()">
+            <select id="category" onchange="filterBooks()">
+                <option value="all">All Categories</option>
+                <option value="productivity">Productivity</option>
+                <option value="history">History</option>
+                <option value="technology">Technology</option>
+            </select>
+        </div>
+        <div id="book-catalog" class="book-list">
+            <div class="book" data-category="history" data-audio="assets/audiobook1.mp3">
+                <h3>History Bites</h3>
+                <p>Quick tales from the past</p>
+                <button onclick="playAudio(this)">Play</button>
+                <button onclick="toggleFavorite(this)">Add to Favorites</button>
+            </div>
+            <div class="book" data-category="technology" data-audio="assets/audiobook1.mp3">
+                <h3>Tech Tidbits</h3>
+                <p>Innovations in 30 minutes</p>
+                <button onclick="playAudio(this)">Play</button>
+                <button onclick="toggleFavorite(this)">Add to Favorites</button>
+            </div>
+            <div class="book" data-category="productivity" data-audio="assets/audiobook1.mp3">
+                <h3>Productivity Hacks</h3>
+                <p>Boost your day</p>
+                <button onclick="playAudio(this)">Play</button>
+                <button onclick="toggleFavorite(this)">Add to Favorites</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Page -->
+    <section id="profile" class="page">
+        <h2>My Profile</h2>
+        <div class="profile-pic">
+            <img src="assets/profile.jpg" alt="Profile Picture" id="profile-img">
+            <input type="file" id="profile-upload" accept="image/*" onchange="updateProfilePic()">
+        </div>
+        <h3>Settings</h3>
+        <label>
+            <input type="checkbox" id="notifications"> Enable Notifications
+        </label>
+        <label>
+            <input type="checkbox" id="dark-mode" checked> Dark Mode
+        </label>
+    </section>
+
+    <!-- Audio Player -->
+    <audio id="audio-player" controls></audio>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button onclick="switchPage('home')" class="nav-btn active">
+            <span class="icon">🏠</span> Home
+        </button>
+        <button onclick="switchPage('my-list')" class="nav-btn">
+            <span class="icon">📚</span> My List
+        </button>
+        <button onclick="switchPage('learn')" class="nav-btn">
+            <span class="icon">🔍</span> Learn
+        </button>
+        <button onclick="switchPage('profile')" class="nav-btn">
+            <span class="icon">👤</span> Profile
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
